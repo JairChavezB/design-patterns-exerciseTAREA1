@@ -1,0 +1,24 @@
+package oop.inheritance.terminal;
+
+import oop.inheritance.data.SupportedTerminal;
+import oop.inheritance.terminal.ingenico.IngenicoTerminalFactory;
+import oop.inheritance.terminal.verifone.Verfone240TerminalFactory;
+
+public abstract class TerminalFactory {
+
+    public abstract Display getDisplay();
+    public abstract Keyboard getKeyboard();
+
+    public abstract Printer getPrinter();
+    public static TerminalFactory getFactory(SupportedTerminal supportedTerminal){
+
+        switch(supportedTerminal){
+            case INGENICO:
+                return new IngenicoTerminalFactory();
+            case VERIFONE:
+                return new Verfone240TerminalFactory();
+        }
+        return null;
+    }
+
+}
